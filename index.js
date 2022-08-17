@@ -7,7 +7,7 @@ const https = require("https");
 const sslRedirect = require("heroku-ssl-redirect");
 
 // enable ssl redirect
-app.use(sslRedirect());
+app.use(sslRedirect.default());
 
 app.set("view engine", "ejs");
 
