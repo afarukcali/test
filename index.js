@@ -20,7 +20,7 @@ app.get("/result", (req, res) => {
   res.render("result.ejs", { result: sha256contextResult });
 });
 
-const server = https.createServer(options, app);
+const server = https.createServer({}, app);
 
 server.listen(process.env.PORT);
 app.listen(process.env.PORT || 3005);
