@@ -20,7 +20,6 @@ app.get("/result", (req, res) => {
   res.render("result.ejs", { result: sha256contextResult });
 });
 
-const server = https.createServer({}, app);
-
-server.listen(process.env.PORT);
-app.listen(process.env.PORT || 3005);
+app.listen(process.env.PORT || 3005, function () {
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
