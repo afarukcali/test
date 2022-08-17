@@ -3,6 +3,7 @@ const app = express();
 const path = require("path");
 const axios = require("axios");
 const sha256context = require("sha256context");
+const https = require("https");
 
 app.set("view engine", "ejs");
 
@@ -19,4 +20,7 @@ app.get("/result", (req, res) => {
   res.render("result.ejs", { result: sha256contextResult });
 });
 
+const server = https.createServer(options, app);
+
+server.listen(process.env.PORT);
 app.listen(process.env.PORT || 3005);
