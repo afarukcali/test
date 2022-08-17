@@ -5,6 +5,8 @@ const axios = require("axios");
 const sha256context = require("sha256context");
 const https = require("https");
 
+var server = https.createServer(app);
+
 app.set("view engine", "ejs");
 
 app.set("views", path.join(__dirname, "views"));
@@ -20,6 +22,12 @@ app.get("/result", (req, res) => {
   res.render("result.ejs", { result: sha256contextResult });
 });
 
-app.listen(process.env.PORT || 3005, function () {
-  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+var port = process.env.PORT || 3005;
+
+server.listen(port, function () {
+  console.log("server listen on", this.address());
+});
+
+server.on("clientError", function (err) {
+  console.log("ERROR", err);
 });
