@@ -4,6 +4,10 @@ const path = require("path");
 const axios = require("axios");
 const sha256context = require("sha256context");
 const https = require("https");
+const sslRedirect = require("heroku-ssl-redirect");
+
+// enable ssl redirect
+app.use(sslRedirect());
 
 app.set("view engine", "ejs");
 
