@@ -19,4 +19,4 @@ app.get("/result", (req, res) => {
   res.render("result.ejs", { result: sha256contextResult });
 });
 
-app.listen(3005);
+app.listen(process.env.PORT || 3005);
